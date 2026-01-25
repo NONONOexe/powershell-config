@@ -11,6 +11,21 @@
 $ProfileStopwatch = [System.Diagnostics.Stopwatch]::StartNew()
 
 #--------------------------------------------------------------------------
+# Bootstrap / Integrations
+#--------------------------------------------------------------------------
+
+# zoxide (smart cd)
+if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+    Invoke-Expression (& { zoxide init powershell | Out-String })
+}
+
+# oh-my-posh (prompt theming)
+if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
+    $OhMyPoshConfig = Join-Path $PSScriptRoot "oh-my-posh/myconfig.omp.json"
+    oh-my-posh --init --shell pwsh --config $OhMyPoshConfig | Invoke-Expression
+}
+
+#--------------------------------------------------------------------------
 # Functions
 #--------------------------------------------------------------------------
 
@@ -38,7 +53,7 @@ function Show-ProfileSummary {
     )
 
     $psVersion = $PSVersionTable.PSVersion.ToString()
-    $os        = [System.Runtime.InteropServices.RuntimeInformation]::OSDescription
+    $os = [System.Runtime.InteropServices.RuntimeInformation]::OSDescription
     $elapsedMs = $Stopwatch.ElapsedMilliseconds
 
     Write-Host "`u{1F436} PowerShell ready" -ForegroundColor Green -NoNewline
