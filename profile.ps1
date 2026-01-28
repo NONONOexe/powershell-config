@@ -44,7 +44,7 @@ function Open-GitPage {
 }
 
 function Edit-Profile {
-    nvim $PROFILE.CurrentUserAllHosts
+    code $PSScriptRoot
 }
 
 function Show-ProfileSummary {
@@ -56,9 +56,8 @@ function Show-ProfileSummary {
     $os = [System.Runtime.InteropServices.RuntimeInformation]::OSDescription
     $elapsedMs = $Stopwatch.ElapsedMilliseconds
 
-    Write-Host "`u{1F436} PowerShell ready" -ForegroundColor Green -NoNewline
-    Write-Host " | PS $psVersion | $os" -ForegroundColor DarkGray
-    Write-Host "`u{23F3} Profile load: ${elapsedMs} ms" -ForegroundColor DarkGray
+    Write-Host "`u{f0a0a} PowerShell $psVersion | `u{e62a} $os" -ForegroundColor Blue
+    Write-Host "`u{f252} Profile load: ${elapsedMs} ms" -ForegroundColor Green
 }
 
 #--------------------------------------------------------------------------
