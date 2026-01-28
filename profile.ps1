@@ -58,6 +58,7 @@ function Show-ProfileSummary {
 
     Write-Host "`u{f0a0a} PowerShell $psVersion | `u{e62a} $os" -ForegroundColor Blue
     Write-Host "`u{f252} Profile load: ${elapsedMs} ms" -ForegroundColor Green
+    Write-Host ""
 }
 
 #--------------------------------------------------------------------------
