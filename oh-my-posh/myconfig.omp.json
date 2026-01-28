@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "final_space": true,
+  "version": 4,
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "session",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4 ",
+          "foreground": "#A89984",
+          "background": "#504945",
+          "template": "\uf2bd {{ .UserName }}@{{ .HostName }} "
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "leading_diamond": "[",
+          "trailing_diamond": "]",
+          "foreground": "#A89984",
+          "template": " {{ .UpstreamIcon }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} "
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "git",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4 ",
+          "foreground": "#EBDBB2",
+          "background": "#D65D0E",
+          "template": " \ue702 \uf1d3 "
+        },
+        {
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "\ue718 {{ .Full }} ",
+          "foreground": "#ffffff",
+          "background": "#6CA35E",
+          "type": "node",
+          "style": "diamond"
+        },
+        {
+          "leading_diamond": " \ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "\ue738 {{ .Full }} ",
+          "foreground": "#ffffff",
+          "background": "#4c1f5e",
+          "type": "java",
+          "style": "diamond"
+        },
+        {
+          "template": " {{ if gt .Code 0 }}<#ff0000>\uf00d</>{{ else }}<#23d18b>\uf42e</>{{ end }} ",
+          "type": "status",
+          "style": "plain"
+        },
+        {
+          "template": "took \uf252 {{ .FormattedMs }} ",
+          "foreground": "#bab02a",
+          "type": "executiontime",
+          "style": "plain"
+        },
+        {
+          "type": "time",
+          "style": "plain",
+          "foreground": "#A89984",
+          "template": "\ue641 {{.CurrentDate | date .Format}} "
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "path",
+          "style": "plain",
+          "template": "{{ .Path }}",
+          "foreground": "#EBDBB2"
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "#D65D0E",
+          "template": " [{{ .HEAD }}] ",
+          "options": {
+            "branch_icon": ""
+          }
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "template": "\u276f",
+          "foreground": "#EBDBB2"
+        }
+      ]
+    }
+  ]
+}
